@@ -1,63 +1,98 @@
 ﻿using System;
+using System.Globalization;
 class Calculadora
 {
-    static void soma()
-    {
-        Console.WriteLine("Digite o primeiro número: ");
-        int num1 = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Digite o segundo número: ");
-        int num2 = Convert.ToInt32(Console.ReadLine());
-
-        double resultado = num1 + num2;
-
-        Console.WriteLine("O resultado da soma é: " + resultado);
-    }
-
-    static void subtracao()
-    {
-         Console.WriteLine("Digite o primeiro número: ");
-        int num1 = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Digite o segundo número: ");
-        int num2 = Convert.ToInt32(Console.ReadLine());
-
-        double resultado = num1 - num2;
     
-        Console.WriteLine("O resultado da subtração é: " + resultado);
-    }
+static void soma()
+{
+    Console.WriteLine("Digite o primeiro número: ");
+    string entrada1 = Console.ReadLine() ?? "0";
+    double num1 = double.Parse(
+        entrada1.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
 
-    static void multiplicacao()
+    Console.WriteLine("Digite o segundo número: ");
+    string entrada2 = Console.ReadLine() ?? "0";
+    double num2 = double.Parse(
+        entrada2.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    double resultado = num1 + num2;
+
+    Console.WriteLine("O resultado da soma é: " + resultado);
+}
+
+static void subtracao()
+{
+    Console.WriteLine("Digite o primeiro número: ");
+    string entrada1 = Console.ReadLine() ?? "0";
+    double num1 = double.Parse(
+        entrada1.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    Console.WriteLine("Digite o segundo número: ");
+    string entrada2 = Console.ReadLine() ?? "0";
+    double num2 = double.Parse(
+        entrada2.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    double resultado = num1 - num2;
+
+    Console.WriteLine("O resultado da subtração é: " + resultado);
+}
+
+static void multiplicacao()
+{
+    Console.WriteLine("Digite o primeiro número: ");
+    string entrada1 = Console.ReadLine() ?? "0";
+    double num1 = double.Parse(
+        entrada1.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    Console.WriteLine("Digite o segundo número: ");
+    string entrada2 = Console.ReadLine() ?? "0";
+    double num2 = double.Parse(
+        entrada2.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    double resultado = num1 * num2;
+
+    Console.WriteLine("O resultado da multiplicação é: " + resultado);
+}
+
+static void divisao()
+{
+    Console.WriteLine("Digite o primeiro número: ");
+    string entrada1 = Console.ReadLine() ?? "0";
+    double num1 = double.Parse(
+        entrada1.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    Console.WriteLine("Digite o segundo número: ");
+    string entrada2 = Console.ReadLine() ?? "0";
+    double num2 = double.Parse(
+        entrada2.Replace(',', '.'),
+        CultureInfo.InvariantCulture
+    );
+
+    if (num2 == 0)
     {
-        Console.WriteLine("Digite o primeiro número: ");
-        int num1 = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Digite o segundo número: ");
-        int num2 = Convert.ToInt32(Console.ReadLine());
-
-        double resultado = num1 * num2;
-
-        Console.WriteLine("O resultado da multiplicação é: " + resultado);
+        Console.WriteLine("Erro: Divisão por zero não é permitida.");
+        return;
     }
 
-    static void divisao()
-    {
-        Console.WriteLine("Digite o primeiro número: ");
-        int num1 = Convert.ToInt32(Console.ReadLine());
+    double resultado = num1 / num2;
 
-        Console.WriteLine("Digite o segundo número: ");
-        int num2 = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("O resultado da divisão é: " + resultado);
+}
 
-        if (num2 == 0)
-        {
-            Console.WriteLine("Erro: Divisão por zero não é permitida.");
-            return;
-        }
-
-        double resultado = (double)num1 / num2;
-
-        Console.WriteLine("O resultado da divisão é: " + resultado);
-    }
     static void Main()
     {
         string opcao;
@@ -67,7 +102,7 @@ class Calculadora
                 Console.WriteLine("=== MENU DE ESCOLHAS ===");
                 Console.WriteLine("1 - Soma");
                 Console.WriteLine("2 - Subtração");
-                Console.WriteLine("3 - Multiplicacão");
+                Console.WriteLine("3 - Multiplicação");
                 Console.WriteLine("4 - Divisão");
                 Console.WriteLine("5 - Sair");
 
@@ -106,7 +141,7 @@ class Calculadora
         }
         if(opcao != "5")
             {
-                Console.WriteLine("\nPresione qualquer tecla para continuar...");
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
             }
             } while(opcao != "5");
